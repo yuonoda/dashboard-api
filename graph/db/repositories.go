@@ -992,13 +992,13 @@ func (o *Repository) Insert(ctx context.Context, exec boil.ContextExecutor, colu
 	}
 
 	var err error
-	if !boil.TimestampsAreSkipped(ctx) {
-		currTime := time.Now().In(boil.GetLocation())
-
-		if queries.MustTime(o.CreatedAt).IsZero() {
-			queries.SetScanner(&o.CreatedAt, currTime)
-		}
-	}
+	//if !boil.TimestampsAreSkipped(ctx) {
+	//	currTime := time.Now().In(boil.GetLocation())
+	//
+	//	if queries.MustTime(o.CreatedAt).IsZero() {
+	//		queries.SetScanner(&o.CreatedAt, currTime)
+	//	}
+	//}
 
 	if err := o.doBeforeInsertHooks(ctx, exec); err != nil {
 		return err
@@ -1204,13 +1204,13 @@ func (o *Repository) Upsert(ctx context.Context, exec boil.ContextExecutor, upda
 	if o == nil {
 		return errors.New("db: no repositories provided for upsert")
 	}
-	if !boil.TimestampsAreSkipped(ctx) {
-		currTime := time.Now().In(boil.GetLocation())
-
-		if queries.MustTime(o.CreatedAt).IsZero() {
-			queries.SetScanner(&o.CreatedAt, currTime)
-		}
-	}
+	//if !boil.TimestampsAreSkipped(ctx) {
+	//	currTime := time.Now().In(boil.GetLocation())
+	//
+	//	if queries.MustTime(o.CreatedAt).IsZero() {
+	//		queries.SetScanner(&o.CreatedAt, currTime)
+	//	}
+	//}
 
 	if err := o.doBeforeUpsertHooks(ctx, exec); err != nil {
 		return err
